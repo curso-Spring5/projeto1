@@ -1,12 +1,15 @@
 package com.example.demo.entity;
 
-import javax.persistence.*;
+import javax.persistence.Id;
 
-@Entity
+import org.springframework.data.mongodb.core.mapping.Document;
+
+//@Entity // - MySQL
+@Document // - MongDB
 public class Role {
 
+		//@GeneratedValue(strategy = GenerationType.AUTO) // - MySQL
 		@Id
-		@GeneratedValue(strategy = GenerationType.AUTO)
 		private Long id;
 		
 		private String name;

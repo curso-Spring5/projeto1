@@ -2,27 +2,36 @@ package com.example.demo.entity;
 
 import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.Id;
 
-@Entity
+import org.springframework.data.mongodb.core.mapping.Document;
+
+//@Entity // - MySQL
+@Document // - MongDB
 public class User {
 
+		//@GeneratedValue(strategy = GenerationType.AUTO) // - MySQL
 		@Id
-		@GeneratedValue(strategy = GenerationType.AUTO)
-		private Long id;
+		private String id;
 		
 		private String name;
-		
 		private String email;
 		
-		@ManyToMany
+		public User(){
+		}
+		public User(String name, String email) {
+			super();
+			this.name = name;
+			this.email = email;
+		}
+		//@ManyToMany // - MySQL
 		private Set<Role> roles;
 
-		public Long getId() {
+		public String getId() {
 			return id;
 		}
 
-		public void setId(Long id) {
+		public void setId(String id) {
 			this.id = id;
 		}
 
@@ -42,5 +51,12 @@ public class User {
 			this.email = email;
 		}
 		
+		public Set<Role> getRoles() {
+			return roles;
+		}
+		
+		public void setRoles(Set<Role> roles) {
+			this.roles = roles;
+		}
 	
 }
